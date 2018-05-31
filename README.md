@@ -7,9 +7,10 @@
 - **[babel](#babel) （88kb）**
 - **[axios](#axios) （13kb）**
 - **[director](#director)（10kb）**
-- **[jquery](#jquery) （94kb）**
 - **[handlebars](#handlebars)（20kb）**
 - **[sass](#sass)**
+- **[jquery](#jquery) （94kb）**
+- **[highcharts](#highcharts)**
 ### 分析
 ### webpack
 - 模块化打包，支持ES6，AMD，CMD，Commonjs等模块方式
@@ -30,14 +31,16 @@
 - 防止客户端XSRF攻击
 ### director
 - 简单、易用、小巧的hash路由
-### jquery
-- js方法库，提供大量简单，易用的DOM处理方法
 ### handlebars
 - template模版语法，嵌入数据，并且可以进行简单的逻辑处理
 - 与React等MVVM框架用法有冲突，为了能支持之前的写法，先保留
 ### sass
 - css另一种语法，可提高开发效率
 - 提供变量，嵌套，混合，通过函数进行颜色值与属性值的运算等强大功能
+### jquery
+- js方法库，提供大量简单，易用的DOM处理方法
+### highcharts
+- 数据可视化插件，支持柱状图，饼图，曲线，地图等许多复杂图形
 ## 文件目录
 - **|—— src**  （开发文件）
      - **|—— common** （行业通用代码）
@@ -63,10 +66,10 @@
      - **|—— index.scss** （行业通用样式）
      - **|—— url.js** （功能点与文件路径匹配配置）
      - **|—— router.js** （路由统一处理）
-     - **|—— index-group.html** （集团入口模版（多入口））
-     - **|—— index-project.html** （项目入口模版（多入口））
-     - **|—— index-group.js** （集团入口（多入口））
-     - **|—— index-project.js** （项目入口（多入口））
+     - **|—— iGroup.html** （集团入口模版（多入口））
+     - **|—— iProject.html** （项目入口模版（多入口））
+     - **|—— iGroup.js** （集团入口（多入口））
+     - **|—— iProject.js** （项目入口（多入口））
      - **|—— index.html** （应用平台入口模版（单入口））
      - **|—— index.js** （应用平台入口（单入口））
 - **|—— package.json** （依赖包描述）
@@ -97,7 +100,7 @@ if (process.env.NODE_ENV === 'development') {
    }
 }
 ```
-## 开发命令
+## CLI
 开发模式下：`$ npm run server`
 生产模式下：`$ npm run build`
 ## 开发注意事项和建议
@@ -116,9 +119,10 @@ if (process.env.NODE_ENV === 'development') {
 - 浏览器兼容性测试
 - 主题样式加载的优化处理
 - 开发模式下，路由重复调用问题，生产模式下未出现该问题
+- 路由加载功能时的用户权限介入
 - 旧功能代码引入新框架后的局部样式问题 
 - 对外H5界面的路由路径的规则制定
-- React重构项目界面入口代码
+- React重构项目界面入口代码(物业和工业判定)
 - 框架环境安装测试
 ## 已完成主要内容
 - 开发模式下的文件监听，热更新，热加载，自动打开浏览器键入网址
