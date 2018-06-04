@@ -135,7 +135,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 ```
 ## CLI
-环境安装：npm install -g
+环境安装：`$ npm install -g`
 开发模式下：`$ npm run server`
 生产模式下：`$ npm run build`
 ## 开发注意事项和建议
@@ -154,9 +154,7 @@ if (process.env.NODE_ENV === 'development') {
 - 浏览器兼容性测试
 - 开发模式下，路由重复调用问题，生产模式下未出现该问题
 - 路由加载功能时的用户权限介入
-- 旧功能代码引入新框架后的局部样式问题 
 - 对外H5界面的路由路径的规则制定
-- React重构项目界面入口代码(物业和工业判定)
 - 框架环境安装测试
 - 其他功能模块还没适应新框架，需要在移入时做些小修改
 - 功能和通用样式分离，主题颜色和布局样式分离
@@ -168,6 +166,7 @@ if (process.env.NODE_ENV === 'development') {
 - 使用React重构了通用功能模块（header/foot/group等）和集团入口代码
 - http请求统一处理
 - 集团和项目样式分离，行业样式分离
+- 行业入口分离
 ## 后续内容
 - 创建新的svn开发地址
 - notFind界面
