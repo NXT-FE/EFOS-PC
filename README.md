@@ -79,7 +79,7 @@
 - **|—— server.js** （本地node服务器）
 - **|—— webpack.config.js** （webpack开发配置）
 - **|—— webpack.prod.js** （webpack生产配置）
-## 集团入口代码
+## 集团入口
 ```es6
 import './index.scss';
 import React, { Component } from 'react';
@@ -102,7 +102,7 @@ if (process.env.NODE_ENV === 'development') {
    }
 }
 ```
-## 项目入口代码
+## 项目入口
 ```es6
 import './index.scss';
 import React from 'react';
@@ -138,12 +138,19 @@ if (process.env.NODE_ENV === 'development') {
 环境安装：`$ npm install -g`
 开发模式下：`$ npm run server`
 生产模式下：`$ npm run build`
+## 浏览器兼容性
+1. **FireFox**
+2. **Chrome**
+3. **Opera**
+4. **IE >= 10**
+5. **360浏览器（极速模式和兼容模式IE>=10内核，最近版本默认IE11内核）**
+6. **QQ浏览器（极速模式和兼容模式IE>=10内核，最近版本默认IE11内核）**
 ## 开发注意事项和建议
 - 在编写代码时注意格式规范，多写注释
 - 新的功能开发强烈建议用[React](https://www.reactjscn.com/)进行组件化开发，逐步向[React](https://www.reactjscn.com/)框架靠拢，抛弃DOM操作，提升界面响应
 - 静态文件，即长期不需要改动的文件（js/css）先期通过CDN的方式引用，减少打包时间和文件体积，提升开发效率，后期建议将图片文件也通过CDN的方式引用，进一步提升打包效率
 - 为了禁止各功能模块的样式冲突，应在组件被卸载时通过style-loader的unuse/unref删除样式
-- 接口调用获取数据时，请使用axios（不需要import，直接使用），方便对后台请求进行统一处理
+- 接口调用获取数据时，请使用Axios（不需要import，直接使用），方便对后台请求进行统一处理
 - 通用的样式和模块，能提取出来就提取出来，放在通用文件中，并做好注释
 - 通用模块的插件编写完成后，放入src/plugins/文件中，提供给其他功能调用
 - 陆续将黑色样式提取出来放入blackTheme.useable.scss中
@@ -151,7 +158,6 @@ if (process.env.NODE_ENV === 'development') {
 ## 未完成内容
 - 分析多入口打包和单页面应用的优缺点，选定适合的打包入口
 - 分析样式以style标签内嵌方式动态插入和生成css文件link插入的优缺点
-- 浏览器兼容性测试
 - 开发模式下，路由重复调用问题，生产模式下未出现该问题
 - 路由加载功能时的用户权限介入
 - 对外H5界面的路由路径的规则制定
@@ -167,6 +173,7 @@ if (process.env.NODE_ENV === 'development') {
 - http请求统一处理
 - 集团和项目样式分离，行业样式分离
 - 行业入口分离
+- 浏览器兼容性测试
 ## 后续内容
 - 创建新的svn开发地址
 - notFind界面
