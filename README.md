@@ -79,7 +79,7 @@
 - **|—— server.js** （本地node服务器）
 - **|—— webpack.config.js** （webpack开发配置）
 - **|—— webpack.prod.js** （webpack生产配置）
-## 入口代码
+## 集团入口代码
 ```es6
 import './index.scss';
 import React, { Component } from 'react';
@@ -102,7 +102,40 @@ if (process.env.NODE_ENV === 'development') {
    }
 }
 ```
+## 项目入口代码
+```es6
+import './index.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Theme from 'common/theme/theme';
+import './http'
+const theme = new Theme();
+
+//行业判定
+const relation = {
+   community: () => import(/* webpackChunkName: "community"*/ "community/project/project.js"),
+   industry: () => import(/* webpackChunkName: "industry"*/ "industry/project/project.js")
+}[location.pathname.split('/')[1]];
+
+relation().then((Project) => {
+   //全局store仓库
+   window.EFOS_STORE = {};
+   // 渲染页面骨架
+   ReactDOM.render(<Project.default theme={theme} />, document.getElementById('efos-root'))
+   //主题加载
+   theme.init();
+}).catch((err) => {
+   console.error(err)
+ })
+
+if (process.env.NODE_ENV === 'development') {
+   if (module.hot) {
+      module.hot.accept();
+   }
+}
+```
 ## CLI
+环境安装：npm install -g
 开发模式下：`$ npm run server`
 生产模式下：`$ npm run build`
 ## 开发注意事项和建议
@@ -126,6 +159,7 @@ if (process.env.NODE_ENV === 'development') {
 - React重构项目界面入口代码(物业和工业判定)
 - 框架环境安装测试
 - 其他功能模块还没适应新框架，需要在移入时做些小修改
+- 功能和通用样式分离，主题颜色和布局样式分离
 ## 已完成主要内容
 - 开发模式下的文件监听，热更新，热加载，自动打开浏览器键入网址，样式无刷新加载
 - 生产模式下的文件打包优化，如css/js压缩、代码分离等
@@ -133,6 +167,7 @@ if (process.env.NODE_ENV === 'development') {
 - 各技术栈文件压缩后的大小测试
 - 使用React重构了通用功能模块（header/foot/group等）和集团入口代码
 - http请求统一处理
+- 集团和项目样式分离，行业样式分离
 ## 后续内容
 - 创建新的svn开发地址
 - notFind界面
