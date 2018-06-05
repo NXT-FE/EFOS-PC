@@ -82,6 +82,8 @@
 - **|—— server.js** （本地node服务器）
 - **|—— webpack.config.js** （webpack开发配置）
 - **|—— webpack.prod.js** （webpack生产配置）
+
+PS:按照现在的界面风格完全可以去掉group和project层，保留group和project层是为了满足以后可能各行业之间的集团和项目界面都不一致的情况。
 ## 集团入口
 ```es6
 import './index.scss';
@@ -159,9 +161,7 @@ if (process.env.NODE_ENV === 'development') {
 - 陆续将黑色样式提取出来放入blackTheme.useable.scss中
 - 样式代码放在scss/css文件中，在js中import，之前的内嵌样式需要提取到样式文件中
 ## 未完成内容
-- 开发模式下，路由重复调用问题，生产模式下未出现该问题
-- 路由加载功能时的用户权限介入
-- 对外H5界面的路由路径的规则制定
+- H5界面的路由路径和入口确定
 - 框架环境安装测试
 ## 已完成主要内容
 - 开发模式下的文件监听，热更新，热加载，自动打开浏览器键入网址，样式无刷新加载
@@ -175,6 +175,7 @@ if (process.env.NODE_ENV === 'development') {
 - 浏览器兼容性测试
 - 决定以开发环境下样式以style标签内嵌方式动态插入和生成环境下生成css文件link插入
 - 决定不使用单个入口打包，多入口打包可方便兼容多行业扩展，样式代码分离等
+- 路由加载功能时和该用户的权限功能进行对比，对比不成功则路由到404 NotFind
 ## 后续内容
 - 创建新的svn开发地址
 - notFind界面
