@@ -9,9 +9,11 @@
 - **[director](#director)（10kb）**
 - **[handlebars](#handlebars)（20kb）**
 - **[sass](#sass)**
-- **[jquery](#jquery) （94kb）**
+- **[jQuery](#jquery) （94kb）**
 - **[highcharts](#highcharts)**
 - **[datatables](#datatables)**
+- **[font-awesome](#font-awesome)**
+- **[bootstrap](#bootstrap)**
 ### 分析
 ### webpack
 - 模块化打包，支持ES6，AMD，CMD，Commonjs等模块方式
@@ -38,12 +40,16 @@
 ### sass
 - css另一种语法，可提高开发效率
 - 提供变量，嵌套，混合，通过函数进行颜色值与属性值的运算等强大功能
-### jquery
+### jQuery
 - js方法库，提供大量简单，易用的DOM处理方法
 ### highcharts
 - 数据可视化插件，支持柱状图，饼图，曲线，地图等许多复杂图形
 ### datatables
 - 表格插件，支持表头固定，自定义渲染，列固定，表格事件处理等强大功能，依赖jquery(有点顾虑，但是没办法)
+### font-awesome
+- 字体矢量图片，通过设置字体样式可自定义图片的大小和颜色
+### bootstrap
+- 提供很多自适应的控件库，如弹框，滚播，提示框等等，后期可能更换为react-bootstrap
 ## 文件目录
 - **|—— dist** （发布文件，build后才会存在）
 - **|—— src**  （开发文件）
@@ -83,7 +89,14 @@
 - **|—— webpack.config.js** （webpack开发配置）
 - **|—— webpack.prod.js** （webpack生产配置）
 
-PS:按照现在的界面风格完全可以去掉group和project层，保留group和project层是为了满足以后可能各行业之间的集团和项目界面都不一致的情况。
+- ### CDN （减少打包时间和发布文件）
+  - **|—— lib.js** （静态js插件库）
+  - **|—— jquery.ui.css** (时间控件样式)
+  - **|—— bootstrap.min.css** （bootstrap样式）
+  - **|—— jquery.datatables.css** （datatable样式）
+  - **|—— font-awesome.min.css** （字体图片样式）
+
+PS:行业之间有重复代码，按照现在的界面风格完全可以去掉group和project层减来少文件体积，保留group和project层是为了满足以后可能各行业之间的集团和项目界面都不一致的情况。
 ## 集团入口
 ```es6
 import './index.scss';
@@ -182,9 +195,9 @@ if (process.env.NODE_ENV === 'development') {
 - 按照PC样式规范重构PC前端样式代码
 - 其他功能模块还没适应新框架，需要在移入时做些小修改
 - 功能和通用样式分离，主题颜色和布局样式分离
-- 重写老的功能代码，逐步淘汰handlebars
 - 深度优化打包时间和文件体积
+- 重写老的功能代码，逐步淘汰handlebars
 - 其他语法的扩展
 - 自动化测试工具
 ## 总结
-为了以后少走弯路，框架还需要进行优化和处理
+下周可以开始将大批量的功能模块稍加修改移入到新框架内，进行试用，并开始着手进行后续内容
