@@ -95,9 +95,11 @@
 - jsx
 - ES6
 - sass
-## 加载关系图
+## 原理
+加载关系图如下：
+=============
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg)
-
+=============
 配置数据结构大致如下：
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/data.jpg)
 
