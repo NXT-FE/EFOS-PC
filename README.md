@@ -89,7 +89,9 @@
 
 ## CLI
 环境安装：`$ npm install`
+<br /> 
 开发模式下：`$ npm run server`（默认3000端口） 或者 `$ npm run start`（默认8080端口），建议使用`$ npm run server`
+<br /> 
 生产模式下：`$ npm run build`
 
 ## 开发软件
