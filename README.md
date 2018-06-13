@@ -16,18 +16,23 @@
 - 代码分离，按需加载js和css
 - 生产模式下代码/静态文件压缩，路径指定，功能模块分离
 - 可配置使用很多功能强大的插件和加载器等，扩展性强
+
 ### react
 - 使用jsx语法开发，js内嵌模版
 - 虚拟DOM，组件化开发，组件化生命钩子
 - MVVM框架，数据视图双向绑定
+
 ### react-router
 - 基于react框架的路由
+
 ### babel
 - 支持ES6语法，如promise，class，Array.prototype.include等
+
 ### axios
 - ajax的promise封装
 - 写法简单，可向后台发送数据前后打断并进行统一处理
 - 防止客户端XSRF攻击
+
 ### sass
 - css另一种语法，可提高开发效率
 - 提供变量，嵌套，混合，通过函数进行颜色值与属性值的运算等强大功能
@@ -42,6 +47,7 @@
 - jsx和ES6语法相比之前的jquery的DOM操作稳定性更强，提升界面响应，书写简洁等，sass语法提供变量，嵌套，混合，通过函数进行颜色值与属性值的运算等强大功能，可统一管理主题颜色代码等，提升开发效率
 - 可扩展巨量、实用、强大的功能
 - 使用数量级大，遇到问题网络上较容易查找，之前的框架scrat基本处于停止维护更新的状态，且使用的人很少
+
 ## 文件目录
 - **|—— dist** （发布文件，build生产后才会存在）
 - **|—— src**  （开发文件）
@@ -85,28 +91,31 @@
 环境安装：`$ npm install`
 开发模式下：`$ npm run server`（默认3000端口） 或者 `$ npm run start`（默认8080端口），建议使用`$ npm run server`
 生产模式下：`$ npm run build`
+
 ## 开发软件
 `Visual Studio Code`
 `webstorm`
 `sublime text`
-
 建议使用 `Visual Studio Code`，功能扩展性强，界面友好，代码调试，集成终端
+
 ## 语法
 - jsx
 - ES6
 - sass
+
 ## 原理
-加载关系图如下：
-=============
+**加载关系图如下：**
+<br /> 
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg)
-=============
-配置数据结构大致如下：
+<br /> 
+**配置数据结构大致如下：**
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/data.jpg)
 
 ## 版本控制
 - 检出2个文件夹，检出的svn路径一致，一个为开发版，一个为发布版
 - 不能提交下次不需要发布的内容，保持svn上始终为需要发布的内容，如果为多人协作开发且为下次不需要发布的内容（情况较少），则通过其他交流工具发送，然后本地覆盖。
 - 发布给到测试或者到外网则使用发布版
+
 ## 发布
 运行在src文件层级运行命令npm run build。
 打包完成后复制整个dist文件夹到发布SVN提交，提交时SVN执行脚本自动同步代码到各个平台。
