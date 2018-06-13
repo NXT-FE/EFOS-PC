@@ -109,6 +109,7 @@
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg)
 <br /> 
 **配置数据结构大致如下：**
+<br /> 
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/data.jpg)
 
 ## 版本控制
