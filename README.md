@@ -95,11 +95,13 @@
 - jsx
 - ES6
 - sass
-##加载关系图
+## 加载关系图
+![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg)
 
+配置数据结构大致如下：
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/data.jpg)
 
-##版本控制
+## 版本控制
 - 检出2个文件夹，检出的svn路径一致，一个为开发版，一个为发布版
 - 不能提交下次不需要发布的内容，保持svn上始终为需要发布的内容，如果为多人协作开发且为下次不需要发布的内容（情况较少），则通过其他交流工具发送，然后本地覆盖。
 - 发布给到测试或者到外网则使用发布版
