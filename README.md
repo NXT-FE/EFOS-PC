@@ -8,6 +8,7 @@
 - **[axios](#axios) （13kb）**
 - **[sass](#sass)**
 - **[highcharts](#highcharts)**
+<br/>
 与第一版相比去掉了 **jquery** /**datatable** /**handlebars** /**director** /**font-awesome** /**bootstrap**
 增加了 **react-router**
 
@@ -56,8 +57,6 @@
           - **|—— place.js** （模版组件关系文件）
           - **|—— router.js** （路由统一处理文件）
      - **|—— static** （静态库）
-          - **|—— project** （工业项目入口）
-               - **|——** （. . .其他开发的功能模块）
      - **|—— style** （非主题库）
      - **|—— template** （模版库）
      - **|—— theme** （主题库）
