@@ -8,7 +8,7 @@
 - **[axios](#axios) （13kb）**
 - **[sass](#sass)**
 - **[highcharts](#highcharts)**
-<br/>
+--------
 与第一版相比去掉了 **jquery** /**datatable** /**handlebars** /**director** /**font-awesome** /**bootstrap**
 增加了 **react-router**
 
