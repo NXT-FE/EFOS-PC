@@ -8,6 +8,9 @@
 - **[axios](#axios) （13kb）**
 - **[sass](#sass)**
 - **[highcharts](#highcharts)**
+与第一版相比去掉了 **jquery** /**datatable** /**handlebars** /**director** /**font-awesome** /**bootstrap**
+增加了 **react-router**
+
 ### 分析
 ### webpack
 - 模块化打包，支持ES6，AMD，CMD，Commonjs等模块方式
@@ -16,27 +19,21 @@
 - 代码分离，按需加载js和css
 - 生产模式下代码/静态文件压缩，路径指定，功能模块分离
 - 可配置使用很多功能强大的插件和加载器等，扩展性强
-
 ### react
 - 使用jsx语法开发，js内嵌模版
 - 虚拟DOM，组件化开发，组件化生命钩子
 - MVVM框架，数据视图双向绑定
-
 ### react-router
 - 基于react框架的路由
-
 ### babel
 - 支持ES6语法，如promise，class，Array.prototype.include等
-
 ### axios
 - ajax的promise封装
 - 写法简单，可向后台发送数据前后打断并进行统一处理
 - 防止客户端XSRF攻击
-
 ### sass
 - css另一种语法，可提高开发效率
 - 提供变量，嵌套，混合，通过函数进行颜色值与属性值的运算等强大功能
-
 ## 新旧框架
 - 旧版本，通用度低，沉余代码，样式混乱，代码和命名不规范，开发过程中容易出现互相覆盖，BUG多
 - 开发模式下文件监听只对修改部分打包，时间从6s减少至2s左右
@@ -49,36 +46,23 @@
 - 使用数量级大，遇到问题网络上较容易查找，之前的框架scrat基本处于停止维护更新的状态，且使用的人很少
 
 ## 文件目录
-- **|—— dist** （发布文件，build生产后才会存在）
-- **|—— src**  （开发文件）
-     - **|—— common** （行业通用代码）
-          - **|—— treelist** （左侧功能导航栏）
-          - **|—— footer** （底部）
-          - **|—— header** （头部导航栏）
-          - **|—— NotFind** （404界面）
-          - **|—— theme** （主题）
-          - **|—— summaryInfo** （集团/实时监控右侧面板）
-          - **|—— components** （功能文件）
-               - **|——** （. . .其他开发的功能模块）
-     - **|—— community**（ 物业）
-          - **|—— group** （集团入口）
-               - **|——** （. . .其他开发的功能模块）
-          - **|—— project** （物业项目入口）
-               - **|——** （. . .其他开发的功能模块）
-     - **|—— industry** （工业）
+- **|—— dist** （发布库，build生产后才会存在）
+- **|—— src**  （开发库）
+     - **|—— component** （组件库）
+     - **|—— interface**（ 功能性库 ）
+          - **|—— components.js** （组件配置文件）
+          - **|—— templates.js** （模版配置文件）
+          - **|—— http.js** （接口统一处理文件）
+          - **|—— place.js** （模版组件关系文件）
+          - **|—— router.js** （路由统一处理文件）
+     - **|—— static** （静态库）
           - **|—— project** （工业项目入口）
                - **|——** （. . .其他开发的功能模块）
-     - **|—— plugins** （插件）
-     - **|—— static** （静态）
-          - **|—— share** （通用图片）
-     - **|—— http.js** （请求发送和接收统一处理）
-     - **|—— index.scss** （行业通用样式）
-     - **|—— url.js** （功能点与文件路径匹配配置）
-     - **|—— router.js** （路由统一处理）
-     - **|—— iGroup.html** （集团入口模版（多入口））
-     - **|—— iProject.html** （项目入口模版（多入口））
-     - **|—— iGroup.js** （集团入口（多入口））
-     - **|—— iProject.js** （项目入口（多入口））
+     - **|—— style** （非主题库）
+     - **|—— template** （模版库）
+     - **|—— theme** （主题库）
+     - **|—— App.js** （入口文件）
+     - **|—— index.scss** （行业通用样式文件）
      - **|—— index.html** （应用平台入口模版（单入口））
      - **|—— index.js** （应用平台入口（单入口））
 - **|—— package.json** （依赖包描述）
@@ -98,6 +82,7 @@
 `Visual Studio Code`
 `webstorm`
 `sublime text`
+<br/>
 建议使用 `Visual Studio Code`，功能扩展性强，界面友好，代码调试，集成终端
 
 ## 语法
@@ -106,11 +91,11 @@
 - sass
 
 ## 原理
-**加载关系图如下：**
+**加载关系图：**
 <br /> 
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg)
 <br /> 
-**配置数据结构大致如下：**
+**配置数据结构大致：**
 <br /> 
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/data.jpg)
 
@@ -138,7 +123,7 @@
 - 使用[React](https://www.reactjscn.com/)进行组件化开发
 - 书写主题或者非主题样式时记得注释该样式所属于哪个组件，样式只能用class选择器且命名需要与组件名相同，最好能使用继承，把样式局部于该组件下，不影响其他组件且易查找修改
 - 接口调用获取数据时，请使用Axios（不需要import，直接使用），方便对后台请求进行统一处理
-- 通用的样式和模块，能提取出来就提取出来，放在通用文件中，并做好注释
-- 通用模块的方法或者插件编写完成后，放入src/plugins/文件中，提供给其他功能调用
+- 通用的样式和模块，能提取出来就提取出来，放在通用文件index.scss中，并做好注释
+- 通用模块的方法或者插件编写完成后，放入src/interface/文件中，提供给其他功能调用
 
 
