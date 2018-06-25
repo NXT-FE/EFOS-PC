@@ -73,9 +73,11 @@
 ## CLI
 环境安装：`$ npm install`
 <br /> 
-开发模式下：`$ npm run server`（默认3000端口） 或者 `$ npm run start`（默认8080端口），建议使用`$ npm run server`
+开发模式：`$ npm run server`（默认3000端口） 或者 `$ npm start`（默认8080端口），建议使用`$ npm run server`
 <br /> 
-生产模式下：`$ npm run build`
+测试模式：`$ npm test`
+<br /> 
+生产模式：`$ npm run build`
 
 ## 开发软件
 `Visual Studio Code`
@@ -98,6 +100,15 @@
 <br /> 
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/data.jpg)
 
+## 代码规范和测试工具
+现在前端比较流行的代码风格测试工具有 **ESLint** 和 **JSHint**
+- **JSHint**
+   支持配置文件，方便使用，支持了一些常用类库，支持基本的ES6，不支持自定义规则、无法根据错误定位到对应的规则。
+- **ESLint**
+   默认规则里面包含了JSHint的规则，易于迁移，可配置为警告和错误两个等级，或者直接禁用掉，支持插件扩展，可以自定义规则，可以根据错误定位到对应的规则，支持ES6，支持React的JSX，缺点是需要进行一些自定义配置，执行速度上不如jslint和jshint。 
+
+建议使用ESLint工具进行代码风格测试
+开发完成后必须通过ESLint代码规范检测工具（检测规则待讨论）
 ## 版本控制
 - 检出2个文件夹，检出的svn路径一致，一个为开发版，一个为发布版
 - 不能提交下次不需要发布的内容，保持svn上始终为需要发布的内容，如果为多人协作开发且为下次不需要发布的内容（情况较少），则通过其他交流工具发送，然后本地覆盖。
