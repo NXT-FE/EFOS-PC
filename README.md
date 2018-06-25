@@ -104,10 +104,38 @@
 <br /> 
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg)
 <br /> 
-**配置数据结构大致：**
-<br /> 
-![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/data.jpg)
-
+**大致数据结构：**
+``` es6
+let config = {
+   template: 'template_9',
+   components: {
+      A: 'component_1',
+      B: 'component_2',
+      C: {
+         template: 'template_1',
+         components: {
+            A: 'component_3',
+            B: 'component_3'
+         }
+      },
+      D: {
+         template: 'template_9',
+         components: {
+            A: 'component_3',
+            B: 'component_3',
+            C: {
+               template: 'template_1',
+               components: {
+                  A: 'component_1',
+                  B: 'component_2'
+               }
+            },
+            D: 'component_3'
+         }
+      }
+   }
+}
+```
 ## 代码规范和测试工具
 现在前端比较流行的代码风格测试工具有 **ESLint** 和 **JSHint**
 - **JSHint**
@@ -117,7 +145,7 @@
 
 建议使用ESLint工具进行代码风格测试
 开发完成后必须通过ESLint代码规范检测工具（检测规则待讨论）
-## 版本控制
+## 版本控制（暂定）
 - 检出2个文件夹，检出的svn路径一致，一个为开发版，一个为发布版
 - 不能提交下次不需要发布的内容，保持svn上始终为需要发布的内容，如果为多人协作开发且为下次不需要发布的内容（情况较少），则通过其他交流工具发送，然后本地覆盖。
 - 发布给到测试或者到外网则使用发布版
@@ -128,7 +156,7 @@
 当只修改小量文件时可以复制单个文件，直接进行上传并删除老文件；同时修改hash，清除浏览器对该文件的缓存。
 但是如果修改时有新增，删除组件时，覆盖后还需要一些额外操作，如修改该组件中的ID,trunk
 
-## 浏览器兼容性
+## 兼容性
    1. **FireFox**
    2. **Chrome**
    3. **Opera**
