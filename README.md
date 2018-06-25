@@ -8,9 +8,11 @@
 - **[axios](#axios) （13kb）**
 - **[sass](#sass)**
 - **[highcharts](#highcharts)**
+- **[antd](#antd)**
 --------
 与第一版相比去掉了 **jquery** /**datatable** /**handlebars** /**director** /**font-awesome** /**bootstrap**
-增加了 **react-router**
+<br/>
+增加了 **react-router** /**antd**
 
 ### 分析
 ### webpack
@@ -35,6 +37,8 @@
 ### sass
 - css另一种语法，可提高开发效率
 - 提供变量，嵌套，混合，通过函数进行颜色值与属性值的运算等强大功能
+### antd
+- 组件库，组件种类多，界面设计合理，提高开发效率
 ## 新旧框架
 - 旧版本，通用度低，沉余代码，样式混乱，代码和命名不规范，开发过程中容易出现互相覆盖，BUG多
 - 开发模式下文件监听只对修改部分打包，时间从6s减少至2s左右
@@ -47,28 +51,32 @@
 - 使用数量级大，遇到问题网络上较容易查找，之前的框架scrat基本处于停止维护更新的状态，且使用的人很少
 
 ## 文件目录
-- **|—— dist** （发布库，build生产后才会存在）
+- **|—— dist** （发布库，build后存在）
 - **|—— src**  （开发库）
      - **|—— component** （组件库）
      - **|—— interface**（ 功能性库 ）
-          - **|—— components.js** （组件配置文件）
-          - **|—— templates.js** （模版配置文件）
-          - **|—— http.js** （接口统一处理文件）
-          - **|—— place.js** （模版组件关系文件）
-          - **|—— router.js** （路由统一处理文件）
+          - **|—— components.js** （组件配置）
+          - **|—— templates.js** （模版配置）
+          - **|—— http.js** （接口统一处理）
+          - **|—— place.js** （模版组件关系）
+          - **|—— router.js** （路由统一处理）
      - **|—— static** （静态库）
      - **|—— style** （非主题库）
      - **|—— template** （模版库）
      - **|—— theme** （主题库）
-     - **|—— App.js** （入口文件）
-     - **|—— index.scss** （行业通用样式文件）
-     - **|—— index.html** （应用平台入口模版（单入口））
-     - **|—— index.js** （应用平台入口（单入口））
+     - **|—— App.js** （程序入口）
+     - **|—— index.scss** （通用样式）
+     - **|—— index.html** （入口模版（单入口））
+     - **|—— index.js** （入口（单入口））
+- **|—— .eslintrc.json** （测试json）
+- **|—— checkstyle.xml** （测试输出报告xml）
 - **|—— package.json** （依赖包描述）
 - **|—— README.md** （框架介绍）
 - **|—— server.js** （本地node服务器）
-- **|—— webpack.config.js** （webpack开发配置）
-- **|—— webpack.prod.js** （webpack生产配置）
+- **|—— webpack.common.js** （webpack通用）
+- **|—— webpack.dev.js** （webpack开发）
+- **|—— webpack.test.js** （webpack测试）
+- **|—— webpack.prod.js** （webpack生产）
 
 ## CLI
 环境安装：`$ npm install`
