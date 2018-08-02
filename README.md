@@ -111,9 +111,7 @@
 
 ## 原理
 **加载关系图：**
-<br /> 
-![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg)
-<br /> 
+![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg?v=2018080202)
 **可配置型界面大致数据结构：**
 ``` es6
 let config = {
