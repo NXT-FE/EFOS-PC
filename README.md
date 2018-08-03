@@ -78,7 +78,7 @@
      - **|—— index.scss** （通用样式）
      - **|—— index.html** （入口模版（单入口））
      - **|—— index.js** （入口（单入口））
-- **|—— .eslintrc.json** （测试json）
+- **|—— .eslintrc.json** （eslint配置）
 - **|—— checkout.xml** （测试输出报告xml）
 - **|—— package.json** （依赖包描述）
 - **|—— README.md** （框架介绍）
@@ -102,7 +102,7 @@
 `webstorm`
 `sublime text`
 <br/>
-建议使用 `Visual Studio Code`，功能扩展性强，界面友好，代码调试，集成终端
+建议使用 `Visual Studio Code`，功能扩展性强，界面友好，代码调试，集成终端，node调试
 
 ## 语法
 - jsx
