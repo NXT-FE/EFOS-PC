@@ -63,7 +63,7 @@
 - **|—— dist** （发布库）
     - **|—— 0.1.0**
     - **|—— 0.1.1**
-    - **|—— x.x.x（版本号）**
+    - **|—— x.x.x**（版本号）
 - **|—— src**  （开发库）
      - **|—— template** （模版共享库）
      - **|—— component** （组件共享库）
@@ -122,13 +122,13 @@
 - ES6/ES7
 - sass
 - TypeScript
-## 内部全局变量（提高开发效率）
+## 内部全局变量（避免手动导入，提高开发效率）
 - **`React/ReactDOM `**
 
    `建议使用rwwd快捷命令生成组件基本结构`
 - **`__SERVICE__`**
 
-   `http请求路径`
+   `http请求路径`  
     `__SERVICE__[serviceCode][apiCode]`
 - **`__STORE__ `**
 
@@ -136,19 +136,19 @@
 - **`Axios `**
 
    `用于发起后台请求`  
-    `Axios.post(__SERVICE__[serviceCode][apiCode],params).then(({data})=>{})`
+    `Axios.post(__SERVICE__[serviceCode][apiCode],params).then(({data})=>{})`  
     `Axios.get(__SERVICE__[serviceCode][apiCode]).then(({data})=>{})`
 - **`Promise `**
 
     `承若，异步操作`
 - **`Loader `**
 
-    `用于按需异步请求加载文件`
-    `const Example = Loader(()=>import(/*webpackChunkName:"example"*/ "component/example"))`
+    `用于按需异步请求加载文件`  
+    `const Example = Loader(()=>import(/*webpackChunkName:"example"*/ "component/example"))`  
     `return <Example {...props}/>`
 - **`Style `**
 
-    `模块化style/style.scss中的类名 用于对应名称的组件,局部化组件样式`
+    `模块化style/style.scss中的类名 用于对应名称的组件,局部化组件样式`  
     `<div className={Style.componentName}>`
         `{...}`
     `</div>`
@@ -208,7 +208,7 @@ let config = {
 
 ## 发布
 运行在src文件层级运行命令npm run build。
-打包完成后复制整个dist文件夹到发布SVN提交，提交时SVN执行脚本自动同步代码到各个平台。
+打包完成后复制dist文件中对应版本文件夹到发布SVN提交，提交时SVN执行脚本自动同步代码到各个平台。
 当只修改小量文件时可以复制单个文件，直接进行上传并删除老文件；同时修改hash，清除浏览器对该文件的缓存。
 但是如果修改时有新增，删除组件时，覆盖后还需要一些额外操作，如修改该组件中的ID,trunk
 
@@ -224,6 +224,5 @@ let config = {
 - 在编写代码时注意格式规范，多写注释
 - 使用[React](https://www.reactjscn.com/)进行组件化开发
 - 书写主题或者非主题样式时记得注释该样式所属于哪个组件，样式只能用class选择器且命名需要与组件名相同，最好能使用继承，把样式局部于该组件下，不影响其他组件且易查找修改
-- 接口调用获取数据时，请使用Axios（不需要import，直接使用），方便对后台请求进行统一处理
 - 通用的样式和模块，能提取出来就提取出来，放在通用文件index.scss中，并做好注释
-- 通用模块的方法或者插件编写完成后，放入src/library/文件中，提供给其他功能调用
+- 通用模块的方法或者插件编写完成后，放入src/library/library文件中，提供给其他功能调用
