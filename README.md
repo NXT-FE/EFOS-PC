@@ -10,9 +10,7 @@
 - **[highcharts](#highcharts)**
 - **[antd](#antd)**
 --------
-与第一版相比去掉了 **jquery** /**datatable** /**handlebars** /**director** /**font-awesome** /**bootstrap**
-<br/>
-增加了 **react-router** /**antd**，后期根据需求可引入 **react-redux**(全局数据store)
+后期根据需求可引入 **react-redux**(全局数据store)
 
 ### 分析
 ### [webpack](https://webpack.js.org/)
@@ -152,9 +150,9 @@
     `<div className={Style.componentName}>`
         `{...}`
     `</div>`
-- **`Highcharts `**
+- **`Library `**
 
-    `<Highcharts {...props}/>`
+    `const { DeepMerge } = Library`
 ## 文件支持（后续根据需要增加更多文件类型的编译支持）  
 `.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
 ## 原理
