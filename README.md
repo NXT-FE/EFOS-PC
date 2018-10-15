@@ -61,7 +61,7 @@
 - **|—— dist** （发布库）
     - **|—— 0.1.0**
     - **|—— 0.1.1**
-    - **|—— x.x.x**（版本号）
+    - **|—— x.x.x**（版本号，可在package.json中修改EFOS的版本号）
 - **|—— src**  （开发库）
      - **|—— template** （模版共享库）
      - **|—— component** （组件共享库）
@@ -82,7 +82,7 @@
      - **|—— style** （非主题样式库）
      - **|—— theme** （主题库）
      - **|—— EFOS.js** （初始化全局数据存储__STORE__和数据接口服务__SERVICE__）
-     - **|—— App.js** （主程序入口）
+     - **|—— App.js** （主程序骨架）
      - **|—— antd-cover.scss** （覆盖antd样式文件）
      - **|—— index.scss** （通用样式）
      - **|—— index.html** （入口模版）
@@ -104,7 +104,7 @@
 ## CLI
 环境安装：`$ npm install`，后面有时间提供github下载
 <br /> 
-开发模式：`$ npm run server`（默认3000端口）
+开发模式：`$ npm run server`（默认3000，可在package.json中修改端口号）
 <br /> 
 生产模式：`$ npm run build`
 
@@ -141,7 +141,7 @@
     `承若，异步操作`
 - **`Loader `**
 
-    `用于按需异步请求加载文件`  
+    `用于按需异步请求加载组件/模版/非配置型界面等`  
     `const Example = Loader(()=>import(/*webpackChunkName:"example"*/ "component/example"))`  
     `return <Example {...props}/>`
 - **`Style `**
@@ -153,12 +153,12 @@
 - **`Library `**
 
     `const { DeepMerge } = Library`
-## 文件支持（后续根据需要增加更多文件类型的编译支持）  
+## 文件类型支持（后续根据需要增加更多类型的编译支持）  
 `.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
 ## 原理
 **加载关系图：**
 ![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg?v=2018101501)
-**可配置型界面大致数据结构：**
+**生成配置型界面数据结构：**
 ``` es6
 let config = {
    template: 'template_9',
