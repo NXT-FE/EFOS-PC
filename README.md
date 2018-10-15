@@ -1,5 +1,5 @@
 ### Created 2018年06月08日
-
+### Updated 2018年10月15日 
 ## 技术栈
 - **[webpack](#webpack)**
 - **[react](#react) （94kb）**
@@ -60,40 +60,53 @@
    - 共存2种功能点渲染方式，一是通过place渲染配置型界面，二是通过功能js渲染对应界面（非配置型界面）
    
 ## 文件目录
-- **|—— dist** （发布库，build后存在）
+- **|—— dist** （发布库）
+    - **|—— 0.1.0**
+    - **|—— 0.1.1**
+    - **|—— x.x.x（版本号）**
 - **|—— src**  （开发库）
-     - **|—— component** （组件库）
+     - **|—— template** （模版共享库）
+     - **|—— component** （组件共享库）
      - **|—— interface** （非配置型界面渲染库）
+     - **|—— H5** （H5界面库）
      - **|—— library**（ 功能性库 ）
           - **|—— components.js** （组件配置）
           - **|—— templates.js** （模版配置）
+          - **|—— interface.js** （非配置型界面配置）
           - **|—— http.js** （接口统一处理）
           - **|—— place.js** （配置型界面模版组件位置处理）
-          - **|—— router.js** （路由统一处理）
-     - **|—— static** （静态库）
-     - **|—— style** （非主题库）
-     - **|—— template** （模版库）
+          - **|—— router.js** （路由统一处理，请求interface对应关系或者place进行相应界面渲染）
+          - **|—— H5.js** （对外H5界面统一渲染判定处理）
+          - **|—— Highcharts.js** （Highcharts统一处理）
+          - **|—— library.js** （功能性共享库，对外提供各种方法调用）
+          - **|—— Loader.js** （全局文件异步加载错误提示，延时等统一处理）
+     - **|—— static** （静态库（图片，视频，音频等静态文件））
+     - **|—— style** （非主题样式库）
      - **|—— theme** （主题库）
-     - **|—— App.js** （程序入口）
+     - **|—— EFOS.js** （初始化全局数据存储__STORE__和数据接口服务__SERVICE__）
+     - **|—— App.js** （主程序入口）
+     - **|—— antd-cover.scss** （覆盖antd样式文件）
      - **|—— index.scss** （通用样式）
-     - **|—— index.html** （入口模版（单入口））
-     - **|—— index.js** （入口（单入口））
-- **|—— .eslintrc.json** （eslint配置）
+     - **|—— index.html** （入口模版）
+     - **|—— index.js** （入口控制）
+     - **|—— login.scss** （登录样式）
+     - **|—— login.html** （登录模版）
+     - **|—— login.js** （登录控制）
+     - **|—— service.json** （数据接口服务配置文件）
+- **|—— .eslintrc.json** （eslint配置文件）
 - **|—— checkout.xml** （测试输出报告xml）
 - **|—— package.json** （依赖包描述）
 - **|—— README.md** （框架介绍）
-- **|—— server.js** （本地node服务器）
+- **|—— server.js** （本地node开发、热更新服务器）
+- **|—— tsconfig.json** （TypeScript语法配置文件）
 - **|—— webpack.common.js** （webpack通用）
-- **|—— webpack.dev.js** （webpack开发）
-- **|—— webpack.test.js** （webpack测试）
-- **|—— webpack.prod.js** （webpack生产）
+- **|—— webpack.dev.js** （webpack开发，集成了代码语法检测）
+- **|—— webpack.prod.js** （webpack生产，集成了代码语法检测）
 
 ## CLI
-环境安装：`$ npm install`
+环境安装：`$ npm install`，后面有时间提供github下载
 <br /> 
-开发模式：`$ npm run server`（默认3000端口） 或者 `$ npm start`（默认8080端口），建议使用`$ npm run server`
-<br /> 
-测试模式：`$ npm test`
+开发模式：`$ npm run server`（默认3000端口）
 <br /> 
 生产模式：`$ npm run build`
 
@@ -102,22 +115,57 @@
 `webstorm`
 `sublime text`
 <br/>
-建议使用 `Visual Studio Code`，功能扩展性强，界面友好，代码调试，集成终端，node调试
+建议使用 `Visual Studio Code`，功能扩展性强，界面友好，代码调试，集成终端
 
-## 语法
+## 语法支持
 - jsx
-- ES6
+- ES6/ES7
 - sass
+- TypeScript
+## 内部全局变量（提高开发效率）
+- **`React/ReactDOM `**
 
+   `建议使用rwwd快捷命令生成组件基本结构`
+- **`__SERVICE__`**
+
+   `http请求路径`
+    `__SERVICE__[serviceCode][apiCode]`
+- **`__STORE__ `**
+
+   `全局存放数据的对象，可通过该对象在不相关组件中互通数据,初始为{ Ver: '1.0', defaultServiceCode: 1 }`
+- **`Axios `**
+
+   `用于发起后台请求`  
+    `Axios.post(__SERVICE__[serviceCode][apiCode],params).then(({data})=>{})`
+    `Axios.get(__SERVICE__[serviceCode][apiCode]).then(({data})=>{})`
+- **`Promise `**
+
+    `承若，异步操作`
+- **`Loader `**
+
+    `用于按需异步请求加载文件`
+    `const Example = Loader(()=>import(/*webpackChunkName:"example"*/ "component/example"))`
+    `return <Example {...props}/>`
+- **`Style `**
+
+    `模块化style/style.scss中的类名 用于对应名称的组件,局部化组件样式`
+    `<div className={Style.componentName}>`
+        `{...}`
+    `</div>`
+- **`Highcharts `**
+
+    `<Highcharts {...props}/>`
+## 文件支持（后续根据需要增加更多文件类型的编译支持）  
+`.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
 ## 原理
 **加载关系图：**
-![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg?v=2018080202)
+![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg?v=2018101501)
 **可配置型界面大致数据结构：**
 ``` es6
 let config = {
    template: 'template_9',
    components: {
-      A: 'component_1',
+      A: ['component_1',{...props}]
       B: 'component_2',
       C: {
          template: 'template_1',
@@ -151,7 +199,7 @@ let config = {
 - **ESLint**
    默认规则里面包含了JSHint的规则，易于迁移，可配置为警告和错误两个等级，或者直接禁用掉，支持插件扩展，可以自定义规则，可以根据错误定位到对应的规则，支持ES6，支持React的JSX，缺点是需要进行一些自定义配置，执行速度上不如jslint和jshint。 
 
-建议使用ESLint工具进行代码风格测试
+使用ESLint工具进行代码风格测试
 开发完成后必须通过ESLint代码规范检测工具（检测规则待讨论）
 ## 版本控制（暂定）
 - 检出2个文件夹，检出的svn路径一致，一个为开发版，一个为发布版
