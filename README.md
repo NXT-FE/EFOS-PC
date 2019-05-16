@@ -10,7 +10,7 @@
 - **[highcharts](#highcharts)**
 - **[antd](#antd)**
 --------
-后期根据需求可引入 **react-redux**(全局数据store)
+后期根据需求可引入 **react-redux**(store,reducer,action,dipatch,subscribe)
 
 ### 分析
 ### [webpack](https://webpack.js.org/)
