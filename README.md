@@ -147,14 +147,14 @@
 - **React/ReactDOM**
 
    `建议使用rwwd快捷命令生成组件基本结构`
-- **_app**
+- **[_app]()**
 
    `注册组件模型`  
    ``` es6
    _app.model({namespace,reducers,state,effects,subscriptions})
    ``` 
    详情看[dva](https://dvajs.com/)
-- **_connect**
+- **[_connect]()**
 
    `链接组件和redux`  
    ``` es6
