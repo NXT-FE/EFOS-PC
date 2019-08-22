@@ -147,14 +147,14 @@
 - **React/ReactDOM**
 
    `建议使用rwwd快捷命令生成组件基本结构`
-- **[_app]()**
+- **_app**
 
    `注册组件模型`  
    ``` es6
    _app.model({namespace,reducers,state,effects,subscriptions})
    ``` 
    详情看[dva](https://dvajs.com/)
-- **[_connect]()**
+- **_connect**
 
    `链接组件和redux`  
    ``` es6
@@ -316,4 +316,4 @@ let config = {
    //如果是想获取json，txt这种文件内容就这么写
    ServerResource.getterContent("_@server_resource/file/xxx.txt",data=>{debugger});
 ```
-- 要尽量使用_app.model将state状态相关移出来到单独的文件YourComponent.model.js中，YourComponent应该只需要存在单纯的UI或者少部分逻辑，然后在你的YourComponent中用_connect把redux关联起来，进而可以读取到其他组件的信息，后期也方便维护，写法参考全局变量[_connect](#_connect)和[_app](#_app_)
+- 要尽量使用_app.model将state状态相关移出来到单独的文件YourComponent.model.js中，YourComponent应该只需要存在单纯的UI或者少部分逻辑，然后在你的YourComponent中用_connect把redux关联起来，进而可以读取到其他组件的信息，后期也方便维护，写法参考全局变量[_connect](#_connect)和[_app](#_app)
