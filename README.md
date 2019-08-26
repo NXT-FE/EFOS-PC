@@ -165,7 +165,16 @@
    //第二种写法
    export default _connect((state)=>state)(Example)
    ``` 
-   详情看[dva](https://dvajs.com/)
+   - **_umas**
+
+   `自动卸载model和style`  
+   ``` es6
+   //返回的state会传到Example组件的this.props中，state中包含所有模型的state，可组件之间互通数据
+   //第一种写法
+   @_connect((state)=>state) 
+   @_umas({model,style})
+   class Example extend Component{}
+   ```
 - **_api**
 
    `http请求路径`  
