@@ -165,7 +165,7 @@
    //第二种写法
    export default _connect((state)=>state)(Example)
    ``` 
-   - **_umas**
+- **_umas**
 
    `自动卸载model和style`  
    ``` es6
