@@ -1,5 +1,4 @@
-### Created 2018年06月08日
-### Updated 2019年08月22日 
+### Created 2018年06月08日  Latest Updated 2019年12月17日 
 ## 技术栈
 - **[webpack](#webpack)**
 - **[react](#react) （94kb）**
@@ -74,12 +73,12 @@
     - **|—— 0.1.1**
     - **|—— x.x.x**（版本号，可在CLI中修改EFOS的版本号）
 - **|—— src**  （开发库）
-   - **|—— EFOS**（平台库）
+   - **|—— EFOS**（EFOS平台）
       - **|—— template** （模版共享库）
       - **|—— component** （组件共享库）
       - **|—— interface** （非配置型界面渲染库）
       - **|—— H5** （H5界面库）
-      - **|—— library**（ 功能性库 ）
+      - **|—— library**（ 功能库 ）
             - **|—— components.js** （组件配置）
             - **|—— templates.js** （模版配置）
             - **|—— interface.js** （非配置型界面配置）
@@ -90,12 +89,14 @@
             - **|—— library.js** （功能性共享库，对外提供各种方法调用）
             - **|—— Loader.js** （全局文件异步加载错误提示，延时等统一处理）
             - **|—— ServerResourceGetter.js** （服务器CDN获取统一处理）
+            - ...
       - **|—— static** （静态库（图片，视频，音频等静态文件））
       - **|—— style** （非主题样式库）
       - **|—— theme** （主题库）
       - **|—— EFOS.js** （初始化全局数据存储_store和数据接口服务_api）
       - **|—— App.js** （主程序骨架）
       - **|—— App.model.js** （主程序模型文件）
+      - **|—— antd-icons.js** （antd icon定义文件，按需加载减少文件体积）
       - **|—— antd-cover.scss** （覆盖antd样式文件）
       - **|—— index.scss** （通用样式）
       - **|—— index.html** （入口模版）
@@ -105,6 +106,9 @@
       - **|—— login.js** （登录控制）
       - **|—— login.model.js** （登录模型文件）
       - **|—— service.json** （数据接口服务配置文件）
+      - ...
+   - **|—— NXT**（接口文档平台）
+      - **与EFOS平台类似，在此不一一列出** 
 - **|—— .eslintrc.json** （eslint配置文件）
 - **|—— .browserslistrc** （autoprefixer样式规则）
 - **|—— .babelrc** （babel配置文件）
@@ -114,12 +118,13 @@
 - **|—— getApiConfig.js** （获取service.json配置的服务）
 - **|—— server.js** （node开发、热更新服务）
 - **|—— build.js** （构建服务）
+- **|—— cssr-loader.js**（本地和服务器文件构建控制）
 - **|—— tsconfig.json** （TypeScript语法配置文件）
 - **|—— webpack.common.js** （webpack通用）
 - **|—— webpack.plat.js** （webpack平台配置）
 - **|—— webpack.dev.js** （webpack开发，集成了eslint代码语法检测）
 - **|—— webpack.prod.js** （webpack生产，集成了eslint代码语法检测）
-
+- ...
 ## CLI
 环境安装：`$ c?npm install`，后面有时间提供github下载
 
@@ -167,7 +172,7 @@
    ``` 
 - **_umas**
 
-   `自动卸载model和style`  
+   `自动装载/卸载model和style，model何style都支持数组类型`  
    ``` es6
    import style from "XXX.use(able)?.scss";
    import model from "XXX.model(.js)?";
@@ -199,6 +204,9 @@
 - **moment**
 
    `moment全局对象`
+- **_**
+
+   `lodash全局对象`
 - **Loader**
 
    `用于按需异步请求加载组件/模版/非配置型界面等`  
@@ -241,7 +249,7 @@
 `.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
 ## 原理
 **加载关系图：**
-![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/relation.jpg?v=2018101501)
+![Image text](https://raw.githubusercontent.com/NXT-FE/EFOS-PC/master/loadRelation.jpg)
 **生成配置型界面数据结构：**
 ``` es6
 let config = {
@@ -282,15 +290,26 @@ let config = {
    默认规则里面包含了JSHint的规则，易于迁移，可配置为警告和错误两个等级，或者直接禁用掉，支持插件扩展，可以自定义规则，可以根据错误定位到对应的规则，支持ES6，支持React的JSX，缺点是需要进行一些自定义配置，执行速度上不如jslint和jshint。 
 
 使用ESLint工具进行代码风格测试
-开发完成后必须通过ESLint代码规范检测工具（检测规则待讨论）
+开发完成后必须通过ESLint代码规范检测工具
+
 ## 版本控制
-- 分为主库和分支，在分支上开发，提交必须携带日志，日志为相关文件解释说明，不同功能分开提交，方便写日志，不然太混乱
-- 需要内测时将分支上代码合并到主库，执行打包发布到预发布平台
-- 测试通过，选择性提交相关代码到主库
-（git正在部署中...）
+分支关系图基本如下
+![Image text](https://raw.githubusercontent.com/NXT-FE/EFOS-PC/master/gitVersion.png)
+
+gitlab上分支类型
+- BUG分支：fix
+- 功能分支：feat-版本号-功能描述
+- 内测分支：releaseT-版本号-描述
+- 预发布分支：releaseP-版本号-描述
+- 正式生产分支：master,tag
+- 线上修复分支：hotfix-版本号-描述
+- 受保护分支：develop,master
+
 ## 发布
-1.手动打包请看[CLI](#CLI),然后通过ftp  192.168.1.31 进行传输，建议用下面的方式发布
-2.jenkins发布 ，登录192.168.1.244:8080  hj/hjmima，选择对应发布任务进行一键构建发布，返回success为绿色则成功
+
+- 内测分支和预发布分支全程由web hook push event管道pipe触发jenkins自动打包文件上传发布并反馈发布结果给到gitlab，
+发布结果有4种状态 暂停/运行running/sucess/error
+- 正式环境由运维人员代理发布
 
 ## 兼容性
    1. **FireFox**
@@ -308,7 +327,7 @@ let config = {
 - 使用[React](https://www.reactjscn.com/)进行组件化开发
 - 通用的样式和模块，能提取出来就提取出来，放在通用文件index.scss
 - 通用模块的方法或者插件编写完成后，放入src/library/library文件中，提供给其他功能调用
-- 可使用Components,Templates全局变量快速引用组件/模版，如const FormWrapper =Loader(Components.FormWrapper);<FormWrapper/>
+- 可使用Components,Templates全局变量快速引用组件/模版，如const FormWrapper =Loader(Components.FormWrapper);
 - 配置型渲染的数据json暂时先放在library/config.js中并导出，非配置型渲染文件放在interface中，并完善interface.js中的配置信息
 - 由isPlace（boolean）判断该功能界面是否通过配置型渲染（true）
 - 需要覆盖antd自带的样式放在antd-cover.scss中
