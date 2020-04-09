@@ -128,12 +128,16 @@
 ## CLI
 环境安装：`$ c?npm install`，后面有时间提供github下载
 
+获取接口文件：`$ npm run gs [args1] [args2]`
+   - args1:环境（可传值：dev | test | rel | prod）（默认dev）
+   - args2:平台（可传值：efos | nxt | EFOS.MRO）（默认efos）
+
 开发模式：`$ c?npm run server [args1] [args2]`
-   - args1:平台名称（可传值：efos | nxt）（默认efos）
+   - args1:平台（可传值：efos | nxt | EFOS.MRO）（默认efos）
    - args2:监听端口号（默认3000，可在package.json中修改默认端口号port，修改该值可同时进行多平台热更新开发）
 
 生产模式：`$ c?npm run build [args1] [args2]`
-   - args1:平台名称（可传值：efos | nxt）（默认efos）
+   - args1:平台（可传值：efos | nxt | EFOS.MRO）（默认efos）
    - args2:版本号（打包后代码路径dist/args2）（默认0.1.0,可在package.json中修改默认版本version）
 
 ## 开发软件
@@ -244,7 +248,17 @@
    ``` es6
    const { OfflineReason } = CodeName;OfflineReason(code)||OfflineReason.Data({type,all,allId,allName})
    ``` 
-   
+- **ServerResource**
+   `为了加快打包速度和文件体积，图片文件CDN获取，支持本地开发和打包时自适应切换来源`
+   ```es6
+   let url = ServerResource.getter("_@server_resource/images/device/PC/default/301/err.png");
+   <ServerResource url="_@server_resource/images/weather/3.url.svg" />
+   import url from "_@server_resource/.../xxx.png"
+   background-image:url(~_@server_resource/.../xxx.png)
+   //如果是想获取json，txt这种文件内容就这么写
+   ServerResource.getterContent("_@server_resource/file/xxx.txt",data=>{debugger});
+   ```
+
 ## 文件类型支持（后续根据需要增加更多类型的编译支持）  
 `.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
 ## 原理
@@ -336,12 +350,4 @@ gitlab上分支类型
 - 界面自适应按2个区间写媒介查询(min-width:1610px)||(max-width:1610px)
 - 计时器可使用组件<Interval {call,time,trigger}><YourComponent></Interval>
 - static/_@server_resource/目录下的文件在build时不会打包进去，记得将文件通过ftp上传到服务器对应文件目录中
-```es6
-   let url = ServerResource.getter("_@server_resource/images/device/PC/default/301/err.png");
-   <ServerResource url="_@server_resource/images/weather/3.url.svg" />
-   import url from "_@server_resource/.../xxx.png"
-   background-image:url("_@server_resource/.../xxx.png")
-   //如果是想获取json，txt这种文件内容就这么写
-   ServerResource.getterContent("_@server_resource/file/xxx.txt",data=>{debugger});
-```
 - 要尽量使用_app.model将state状态相关移出来到单独的文件YourComponent.model.js中，YourComponent应该只需要存在单纯的UI或者少部分逻辑，然后在你的YourComponent中用_connect把redux关联起来，进而可以读取到其他组件的信息，后期也方便维护，写法参考全局变量[_connect](#_connect)和[_app](#_app)
