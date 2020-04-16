@@ -130,14 +130,14 @@
 
 获取接口文件：`$ npm run gs [args1] [args2]`
    - args1:环境（可传值：dev | test | rel | prod）（默认dev）
-   - args2:平台（可传值：efos | nxt | EFOS.MRO）（默认efos）
+   - args2:平台（可传值：efos | nxt | mro）（默认efos）
 
 开发模式：`$ c?npm run server [args1] [args2]`
-   - args1:平台（可传值：efos | nxt | EFOS.MRO）（默认efos）
+   - args1:平台（可传值：efos | nxt | mro）（默认efos）
    - args2:监听端口号（默认3000，可在package.json中修改默认端口号port，修改该值可同时进行多平台热更新开发）
 
 生产模式：`$ c?npm run build [args1] [args2]`
-   - args1:平台（可传值：efos | nxt | EFOS.MRO）（默认efos）
+   - args1:平台（可传值：efos | nxt | mro）（默认efos）
    - args2:版本号（打包后代码路径dist/args2）（默认0.1.0,可在package.json中修改默认版本version）
 
 ## 开发软件
@@ -257,6 +257,13 @@
    background-image:url(~_@server_resource/.../xxx.png)
    //如果是想获取json，txt这种文件内容就这么写
    ServerResource.getterContent("_@server_resource/file/xxx.txt",data=>{debugger});
+   ```
+- **EFOS | NXT | MRO**
+   `跨平台资源引用`
+   ```es6
+   import "EFOS/XXX/XXX"
+   import "NXT/XXX/XXX"
+   import "MRO/XXX/XXX"
    ```
 
 ## 文件类型支持（后续根据需要增加更多类型的编译支持）  
