@@ -1,4 +1,4 @@
-### Created 2018年06月08日  Latest Updated 2020年04月09日 
+### Latest Updated 2020年04月20日 @nxt-hj
 ## 技术栈
 - **[webpack](#webpack)**
 - **[react](#react) （94kb）**
@@ -33,7 +33,7 @@
 ### [babel](https://babeljs.io/docs/en/)
 - 支持下一代语法，如Promise，class，Array.prototype.include，模版字符串，箭头函数，解构，默认参数，扩展运算，迭代器，新的内嵌功能库等
 - 打包编译ES6+=>ES5
-- 提供各种plugins扩展语法，提升开发效率
+- 提供各种plugins的扩展，支持一些特殊写法，提升开发效率
 ### [axios](https://www.npmjs.com/package/axios/v/0.18.0)
 - ajax的promise封装
 - 写法简单，可向后台发送数据前后打断并进行统一处理
@@ -79,17 +79,18 @@
       - **|—— interface** （非配置型界面渲染库）
       - **|—— H5** （H5界面库）
       - **|—— library**（ 功能库 ）
-            - **|—— components.js** （组件配置）
-            - **|—— templates.js** （模版配置）
-            - **|—— interface.js** （非配置型界面配置）
-            - **|—— http.js** （接口统一处理）
-            - **|—— place.js** （配置型界面模版组件位置处理）
-            - **|—— router.js** （路由统一处理，请求interface对应关系或者place进行相应界面渲染）
-            - **|—— H5.js** （对外H5界面统一渲染判定处理）
-            - **|—— library.js** （功能性共享库，对外提供各种方法调用）
-            - **|—— Loader.js** （全局文件异步加载错误提示，延时等统一处理）
-            - **|—— ServerResourceGetter.js** （服务器CDN获取统一处理）
-            - ...
+         - **|—— components.js** （组件配置
+         - **|—— templates.js** （模版配置）
+         - **|—— interface.js** （非配置型界面配置）
+         - **|—— http.js** （接口统一处理）
+         - **|—— place.js** （配置型界面模版组件位置处理）
+         - **|—— router.js** （路由统一处理，请求interface对应关系或者place进行相应界面渲染）
+         - **|—— H5.js** （对外H5界面统一渲染判定处理）
+         - **|—— library.js** （功能性共享库，对外提供各种方法调用）
+         - **|—— Loader.js** （全局文件异步加载错误提示，延时等统一处理）
+         - **|—— ServerResourceGetter.js** （服务器CDN获取统一处理）
+         - **|—— umas.js** （model和style装饰器）
+         ...
       - **|—— static** （静态库（图片，视频，音频等静态文件））
       - **|—— style** （非主题样式库）
       - **|—— theme** （主题库）
@@ -108,6 +109,8 @@
       - **|—— service.json** （数据接口服务配置文件）
       - ...
    - **|—— NXT**（接口文档平台）
+      - **与EFOS平台类似，在此不一一列出** 
+   - **|—— MRO**（运维平台）
       - **与EFOS平台类似，在此不一一列出** 
 - **|—— .eslintrc.json** （eslint配置文件）
 - **|—— .browserslistrc** （autoprefixer样式规则）
@@ -155,15 +158,17 @@
 ## 内部全局变量（避免手动导入，提高开发效率）
 - **React/ReactDOM**
 
-   `建议使用rwwd快捷命令生成组件基本结构`
-- **_app**
+   `建议安装插件Reactjs code snippets，使用rwwd快捷命令快速生成react组件基本结构`
+- **[_app]**
 
    `注册组件模型`  
    ``` es6
    _app.model({namespace,reducers,state,effects,subscriptions})
+   //全局发起state更新，重渲
+   _app._store.dispatch({type,...state})
    ``` 
    详情看[dva](https://dvajs.com/)
-- **_connect**
+- **[_connect]**
 
    `链接组件和redux`  
    ``` es6
@@ -174,7 +179,7 @@
    //第二种写法
    export default _connect((state)=>state)(Example)
    ``` 
-- **_umas**
+- **[_umas]**
 
    `自动装载/卸载model和style，model何style都支持数组类型`  
    ``` es6
@@ -341,20 +346,21 @@ gitlab上分支类型
    6. **QQ浏览器（极速模式和兼容模式IE>=10内核，最近版本默认IE11内核）**
 
 ## 开发注意事项和建议
+
 - 在编写代码时注意格式规范，多写注释
 - 根据需求，先期在antd上对比是否存在可使用组件，不存在则进行开发
 - 编写组件或者模版时，在component或者template下建立文件夹将组件的功能和样式（不是必须）文件放入，
-   编写属性匹配文件（xxx.d.ts），且完善components.js/templates.js中的配置信息           
-- 使用[React](https://www.reactjscn.com/)进行组件化开发
+   编写属性匹配文件（xxx.d.ts），且完善components.js/templates.js中的配置信息 
 - 通用的样式和模块，能提取出来就提取出来，放在通用文件index.scss
 - 通用模块的方法或者插件编写完成后，放入src/library/library文件中，提供给其他功能调用
-- 可使用Components,Templates全局变量快速引用组件/模版，如const FormWrapper =Loader(Components.FormWrapper);
+- 可使用Components,Templates全局变量快速引用组件/模版，如const FormWrapper =Loader(Components.FormWrapper)
 - 配置型渲染的数据json暂时先放在library/config.js中并导出，非配置型渲染文件放在interface中，并完善interface.js中的配置信息
 - 由isPlace（boolean）判断该功能界面是否通过配置型渲染（true）
 - 需要覆盖antd自带的样式放在antd-cover.scss中
 - 需要手动重定向当前页面路由，可以使用全局_store.history对象，也可以通过redux中efos.history获取到，参考https://www.npmjs.com/package/history
-- 获取接口路径方式：_api[服务id][接口id]
 - 界面自适应按2个区间写媒介查询(min-width:1610px)||(max-width:1610px)
+- 因为会自动卸载样式,所以没有启用css编译时的module功能，类名不会添加hash，但是开发时还是要养成习惯尽量在你的样式前加一层父级嵌套，减少样式冲突，相互影响的可能性
+- 开发时建议使用[_umas](#_umas)装饰器，可自动装载和卸载model和style，减少重复性的工作，减少开发量
 - 计时器可使用组件<Interval {call,time,trigger}><YourComponent></Interval>
 - static/_@server_resource/目录下的文件在build时不会打包进去，记得将文件通过ftp上传到服务器对应文件目录中
 - 要尽量使用_app.model将state状态相关移出来到单独的文件YourComponent.model.js中，YourComponent应该只需要存在单纯的UI或者少部分逻辑，然后在你的YourComponent中用_connect把redux关联起来，进而可以读取到其他组件的信息，后期也方便维护，写法参考全局变量[_connect](#_connect)和[_app](#_app)
