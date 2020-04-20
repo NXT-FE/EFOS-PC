@@ -156,10 +156,10 @@
 - sass
 - TypeScript
 ## 内部全局变量（避免手动导入，提高开发效率）
-- **React/ReactDOM**
+### **React/ReactDOM**
 
    `建议安装插件Reactjs code snippets，使用rwwd快捷命令快速生成react组件基本结构`
-- **[_app]**
+### **_app**
 
    `注册组件模型`  
    ``` es6
@@ -168,7 +168,7 @@
    _app._store.dispatch({type,...state})
    ``` 
    详情看[dva](https://dvajs.com/)
-- **[_connect]**
+### **_connect**
 
    `链接组件和redux`  
    ``` es6
@@ -179,7 +179,7 @@
    //第二种写法
    export default _connect((state)=>state)(Example)
    ``` 
-- **[_umas]**
+### **_umas**
 
    `自动装载/卸载model和style，model何style都支持数组类型`  
    ``` es6
@@ -189,16 +189,16 @@
    @_umas({model,style})
    class Example extend Component{}
    ```
-- **_api**
+### **_api**
 
    `http请求路径`  
    ```es6
    _api[serviceCode][apiCode]
    ```
-- **_store**
+### **_store**
 
    `全局存放数据的对象，可通过该对象在不相关组件中互通数据,初始为{ Ver: '1.0', defaultServiceCode: 1 }`
-- **Axios $post $get**
+### **Axios $post $get**
 
    `用于发起后台请求`  
    ``` es6
@@ -207,53 +207,53 @@
    //不建议使用这种
    Axios.post(url,params,config)
    ```
-- **Promise**
+### **Promise**
 
    `承若，异步操作`
-- **moment**
+### **moment**
 
    `moment全局对象`
-- **_**
+### **_**
 
    `lodash全局对象`
-- **Loader**
+### **Loader**
 
    `用于按需异步请求加载组件/模版/非配置型界面等`  
    ``` es6
    const Example = Loader(()=>import(/*webpackChunkName:"example"*/ "component/example"))
    return <Example {...props}/>
    ```
-- **Components**
+### **Components**
 
    `组件ReactNode` 
    ``` es6
    const TableWrapper = Loader(Components.TableWrapper)
    ```
-- **Templates**
+### **Templates**
 
    `模版ReactNode` 
    ``` es6
    const SingleDiv = Loader(Templates.SingleDiv)
    ```
-- **Interface**
+### **Interface**
 
    `界面ReactNode` 
    ``` es6
    const blocManage = Loader(Interface.blocManage)
    ```
-- **Library**
+### **Library**
 
    `功能函数库`
    ``` es6
    const { DeepMerge } = Library
    ```
-- **CodeName**
+### **CodeName**
 
    `前端定义的code和name对应表和固定下拉数据`
    ``` es6
    const { OfflineReason } = CodeName;OfflineReason(code)||OfflineReason.Data({type,all,allId,allName})
    ``` 
-- **ServerResource**
+### **ServerResource**
    `为了加快打包速度和文件体积，图片文件CDN获取，支持本地开发和打包时自适应切换来源`
    ```es6
    let url = ServerResource.getter("_@server_resource/images/device/PC/default/301/err.png");
@@ -263,7 +263,7 @@
    //如果是想获取json，txt这种文件内容就这么写
    ServerResource.getterContent("_@server_resource/file/xxx.txt",data=>{debugger});
    ```
-- **EFOS | NXT | MRO**
+### **EFOS | NXT | MRO**
    `跨平台资源引用`
    ```es6
    import "EFOS/XXX/XXX"
