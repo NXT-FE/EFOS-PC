@@ -199,16 +199,16 @@
 
    `http请求路径`  
    ```es6
-   _api[serviceCode][apiCode]
+   _api[apiCode]
    ```
 ### **_store**
 
-   `全局存放数据的对象，可通过该对象在不相关组件中互通数据,初始为{ Ver: '1.0', defaultServiceCode: 1 }`
+   `全局存放数据的对象，可通过该对象在组件中共享非组件状态数据，组件状态建议使用redux管理，初始为{ Ver: '1.0', defaultServiceCode: 1 }`
 ### **Axios $post $get**
 
    `用于发起后台请求`  
    ``` es6
-   $post(apiCode, parames, config = {}, serviceCode = 1).then(({data})=>{})
+   $post(apiCode, parames, config = {}).then(({data})=>{})
    $get(url,config={}).then(({data})=>{})
    //不建议使用这种
    Axios.post(url,params,config)
