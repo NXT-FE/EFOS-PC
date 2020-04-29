@@ -161,7 +161,7 @@
    `建议安装插件Reactjs code snippets，使用rwwd快捷命令快速生成react组件基本结构`
 ### **Place**
 
-   `处理模板和组件嵌套关系的组件，请看这边`[加载关系图](#加载关系图)
+   `处理模板和组件嵌套关系的组件，请看这边`[加载关系图](#配置数据渲染)
    ```jsx
       <Place {...config} />
    ```
@@ -279,7 +279,7 @@
 
 ## 文件类型支持（后续根据需要增加更多类型的编译支持）  
 `.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
-## 原理
+## 配置数据渲染
 **加载关系图**
 ![Image text](https://raw.githubusercontent.com/NXT-FE/EFOS-PC/master/loadRelation.jpg)
 **生成配置型界面数据结构：**
