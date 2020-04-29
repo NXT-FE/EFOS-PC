@@ -159,9 +159,15 @@
 ### **React/ReactDOM**
 
    `建议安装插件Reactjs code snippets，使用rwwd快捷命令快速生成react组件基本结构`
+### **Place**
+
+   `处理模板和组件嵌套关系的组件，请看这边`[加载关系图](#加载关系图)
+   ```jsx
+      <Place {...config} />
+   ```
 ### **_app**
 
-   `注册组件模型`  
+   `注册组件模型`
    ``` es6
    _app.model({namespace,reducers,state,effects,subscriptions})
    //全局发起state更新，重渲
@@ -274,7 +280,7 @@
 ## 文件类型支持（后续根据需要增加更多类型的编译支持）  
 `.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
 ## 原理
-**加载关系图：**
+**加载关系图**
 ![Image text](https://raw.githubusercontent.com/NXT-FE/EFOS-PC/master/loadRelation.jpg)
 **生成配置型界面数据结构：**
 ``` es6
@@ -354,7 +360,7 @@ gitlab上分支类型
 - 通用的样式和模块，能提取出来就提取出来，放在通用文件index.scss
 - 通用模块的方法或者插件编写完成后，放入src/library/library文件中，提供给其他功能调用
 - 可使用Components,Templates全局变量快速引用组件/模版，如const FormWrapper =Loader(Components.FormWrapper)
-- 配置型渲染的数据json暂时先放在library/config.js中并导出，非配置型渲染文件放在interface中，并完善interface.js中的配置信息
+- 配置型界面，使用渲染数据json通过[Place](#Place)实现
 - 由isPlace（boolean）判断该功能界面是否通过配置型渲染（true）
 - 需要覆盖antd自带的样式放在antd-cover.scss中
 - 需要手动重定向当前页面路由，可以使用全局_store.history对象，也可以通过redux中efos.history获取到，参考https://www.npmjs.com/package/history
