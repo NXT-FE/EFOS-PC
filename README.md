@@ -78,6 +78,9 @@
       - **|—— component** （组件共享库）
       - **|—— interface** （非配置型界面渲染库）
       - **|—— H5** （H5界面库）
+      - **|—— hook** （一些公共hooK）
+      - **|—— navi** （导航）
+      - **|—— services** （公共接口服务）
       - **|—— library**（ 功能库 ）
          - **|—— components.js** （组件配置
          - **|—— templates.js** （模版配置）
