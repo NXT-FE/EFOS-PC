@@ -131,6 +131,9 @@
 - **|—— webpack.dev.js** （webpack开发，集成了eslint代码语法检测）
 - **|—— webpack.prod.js** （webpack生产，集成了eslint代码语法检测）
 - ...
+
+现在平台文件层最高，虽然这样也可以通过`import EFOS/XXX`这种方式相互引用，但是可能会形成交叉，后期不好维护，所以可能会逐步将部分方法/服务/组件/模板放在平台的外层，供多平台通用
+
 ## CLI
 环境安装：`$ c?npm install`，后面有时间提供github下载
 
