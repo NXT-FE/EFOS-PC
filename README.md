@@ -68,84 +68,80 @@
    - 共存2种功能点渲染方式，一是通过place渲染配置型界面，二是通过功能js渲染对应界面（非配置型界面）
    
 ## 文件目录
-- **|—— dist** （发布库）
+- **|—— dist** （生产）
     - **|—— 0.1.0**
     - **|—— 0.1.1**
     - **|—— x.x.x**（版本号，可在CLI中修改EFOS的版本号）
-- **|—— src**  （开发库）
-   - **|—— EFOS**（EFOS平台）
-      - **|—— template** （模版共享库）
-      - **|—— component** （组件共享库）
-      - **|—— interface** （非配置型界面渲染库）
-      - **|—— H5** （H5界面库）
-      - **|—— hook** （一些公共hooK）
-      - **|—— navi** （导航）
-      - **|—— services** （公共接口服务）
-      - **|—— library**（ 功能库 ）
-         - **|—— components.js** （组件配置
-         - **|—— templates.js** （模版配置）
-         - **|—— interface.js** （非配置型界面配置）
-         - **|—— http.js** （接口统一处理）
-         - **|—— place.js** （配置型界面模版组件位置处理）
-         - **|—— router.js** （路由统一处理，请求interface对应关系或者place进行相应界面渲染）
-         - **|—— H5.js** （对外H5界面统一渲染判定处理）
-         - **|—— library.js** （功能性共享库，对外提供各种方法调用）
-         - **|—— Loader.js** （全局文件异步加载错误提示，延时等统一处理）
-         - **|—— ServerResourceGetter.js** （服务器CDN获取统一处理）
-         - **|—— umas.js** （model和style装饰器）
-         ...
-      - **|—— static** （静态库（图片，视频，音频等静态文件））
-      - **|—— style** （非主题样式库）
-      - **|—— theme** （主题库）
-      - **|—— EFOS.js** （初始化全局数据存储_store和数据接口服务_api）
-      - **|—— App.js** （主程序骨架）
-      - **|—— App.model.js** （主程序模型文件）
-      - **|—— antd-icons.js** （antd icon定义文件，按需加载减少文件体积）
-      - **|—— antd-cover.scss** （覆盖antd样式文件）
-      - **|—— index.scss** （通用样式）
-      - **|—— index.html** （入口模版）
-      - **|—— index.js** （入口控制）
-      - **|—— login.scss** （登录样式）
-      - **|—— login.html** （登录模版）
-      - **|—— login.js** （登录控制）
-      - **|—— login.model.js** （登录模型文件）
-      - **|—— service.json** （数据接口服务配置文件）
+- **|—— src**  （开发）
+   - **|—— component**（组件）
+   - **|—— hook**（公共hooK）
+   - **|—— library**（通用功能库，如http统一处理/通用函数/通用异步加载器/CDN图片处理/全局引入/配置界面渲染处理/装饰器等）
+   - **|—— template**（模板）
+   - **|—— platform**（平台）
+      - **|—— UDS**（UDS平台）
+         - **|—— interface** （非配置型界面）
+         - **|—— H5** （H5库）
+         - **|—— navi** （导航）
+         - **|—— services** （公共接口服务）
+         - **|—— library**（ 平台功能 ）
+            - **|—— router.js** （路由统一处理，请求interface或者place进行界面渲染）
+            - **|—— H5.js** （H5配置）
+            - **|—— config.js** （json界面渲染配置）
+            ...
+         - **|—— static** （静态库（图片，视频，音频等静态文件））
+         - **|—— style** （非主题样式）
+         - **|—— theme** （主题）
+         - **|—— UDS.js** （平台相关全局引入）
+         - **|—— App.js** （主程序骨架）
+         - **|—— App.model.js** （主程序模型文件）
+         - **|—— antd-icons.js** （antd icon定义文件，按需加载减少文件体积）
+         - **|—— antd-cover.scss** （覆盖antd样式文件）
+         - **|—— index.scss** （通用样式）
+         - **|—— index.html** （入口模版）
+         - **|—— index.js** （入口控制）
+         - **|—— login.scss** （登录样式）
+         - **|—— login.html** （登录模版）
+         - **|—— login.js** （登录控制）
+         - **|—— login.model.js** （登录模型文件）
+         - **|—— service.json** （数据接口服务配置文件）
       - ...
-   - **|—— NXT**（接口文档平台）
-      - **与EFOS平台类似，在此不一一列出** 
-   - **|—— MRO**（运维平台）
-      - **与EFOS平台类似，在此不一一列出** 
-- **|—— .eslintrc.json** （eslint配置文件）
+      - **|—— NXT**（接口文档平台）
+         - **与EFOS平台类似，在此不一一列出** 
+      - **|—— MRO**（运维平台）
+         - **与EFOS平台类似，在此不一一列出** 
+   - ...
+- **|—— .eslintrc.json** （eslint配置）
 - **|—— .browserslistrc** （autoprefixer样式规则）
-- **|—— .babelrc** （babel配置文件）
+- **|—— .babelrc** （babel配置）
 - **|—— checkout.xml** （测试输出报告xml）
 - **|—— package.json** （依赖包描述）
 - **|—— README.md** （框架介绍）
 - **|—— getApiConfig.js** （获取service.json配置的服务）
 - **|—— server.js** （node开发、热更新服务）
 - **|—— build.js** （构建服务）
-- **|—— cssr-loader.js**（本地和服务器文件构建控制）
+- **|—— cssr-loader.js**（webpack loader-本地和服务器文件构建控制）
+- **|—— dynamic-loader.js**（webpack loader-异步导入构建控制）
 - **|—— tsconfig.json** （TypeScript语法配置文件）
-- **|—— webpack.common.js** （webpack通用）
+- **|—— webpack.common.js** （webpack通用配置）
 - **|—— webpack.plat.js** （webpack平台配置）
-- **|—— webpack.dev.js** （webpack开发，集成了eslint代码语法检测）
-- **|—— webpack.prod.js** （webpack生产，集成了eslint代码语法检测）
-- ...
+- **|—— webpack.dev.js** （webpack开发配置，集成了eslint代码语法检测）
+- **|—— webpack.prod.js** （webpack生产配置，集成了eslint代码语法检测）
+- **|—— WebpackHtmlPrePlugin.js** （webpack plugin-依据平台和部署环境插入性能优化项）
+- **|—— webpackPreloadPlugin.js** （webpack plugin-构建分析）
 
-现在平台文件层最高，虽然这样也可以通过`import EFOS/XXX`这种方式相互引用，但是可能会形成交叉，后期不好维护，所以可能会逐步将部分方法/服务/组件/模板放在平台的外层，供多平台通用
 
 ## CLI
-环境安装：`$ c?npm install`，后面有时间提供github下载
+环境安装：`$ npm install`
 
 获取接口文件：`$ npm run gs [args1] [args2]`
    - args1:环境（可传值：dev | test | rel | prod）（默认dev）
    - args2:平台（可传值：efos | nxt | mro）（默认efos）
 
-开发模式：`$ c?npm run server [args1] [args2]`
+开发模式：`$ npm run server [args1] [args2]`
    - args1:平台（可传值：efos | nxt | mro）（默认efos）
    - args2:监听端口号（默认3000，可在package.json中修改默认端口号port，修改该值可同时进行多平台热更新开发）
 
-生产模式：`$ c?npm run build [args1] [args2]`
+生产模式：`$ npm run build [args1] [args2]`
    - args1:平台（可传值：efos | nxt | mro）（默认efos）
    - args2:版本号（打包后代码路径dist/args2）（默认0.1.0,可在package.json中修改默认版本version）
 
@@ -219,9 +215,7 @@
    //不建议使用这种
    Axios.post(url,params,config)
    ```
-#### **Promise**
 
-   `承若，异步操作`
 #### **moment**
 
    `moment全局对象`
@@ -231,28 +225,20 @@
 #### **Loader**
 
    `用于按需异步请求加载组件/模版/非配置型界面等`  
-   ``` es6
-   const Example = Loader(()=>import(/*webpackChunkName:"example"*/ "component/example"))
-   return <Example {...props}/>
-   ```
-#### **Components**
 
-   `组件ReactNode` 
    ``` es6
-   const TableWrapper = Loader(Components.TableWrapper)
+   //组件
+   const Example = Loader('component.ModalWrapper');
+   //模板
+   const LineHorizontal = Loader('template.LineHorizontal');
+   //界面
+   const trajectory = Loader('interface/trajectory');
+   //H5
+   const VideoPlay = Loader('H5/SituationVideo/VideoPlay/VideoPlay');
+   //其他,注意：('/A.B')--A代表文件名，B代表构建后文件名，B可省略，注意B的重复问题
+   const CCC_Video = Loader('interface/syntheticalSituation/Layout2/3C/video.CCC_Video');
    ```
-#### **Templates**
 
-   `模版ReactNode` 
-   ``` es6
-   const SingleDiv = Loader(Templates.SingleDiv)
-   ```
-#### **Interface**
-
-   `界面ReactNode` 
-   ``` es6
-   const blocManage = Loader(Interface.blocManage)
-   ```
 #### **Library**
 
    `功能函数库`
@@ -274,13 +260,6 @@
    background-image:url(~_@server_resource/.../xxx.png)
    //如果是想获取json，txt这种文件内容就这么写
    ServerResource.getterContent("_@server_resource/file/xxx.txt",data=>{debugger});
-   ```
-#### **EFOS | NXT | MRO**
-   `跨平台资源引用`
-   ```es6
-   import "EFOS/XXX/XXX"
-   import "NXT/XXX/XXX"
-   import "MRO/XXX/XXX"
    ```
 
 ## 文件类型支持（后续根据需要增加更多类型的编译支持）  
@@ -361,18 +340,12 @@ gitlab上分支类型
 
 - 在编写代码时注意格式规范，多写注释
 - 根据需求，先期在antd上对比是否存在可使用组件，不存在则进行开发
-- 编写组件或者模版时，在component或者template下建立文件夹将组件的功能和样式（不是必须）文件放入，
-   编写属性匹配文件（xxx.d.ts），且完善components.js/templates.js中的配置信息 
 - 通用的样式和模块，能提取出来就提取出来，放在通用文件index.scss
-- 通用模块的方法或者插件编写完成后，放入src/library/library文件中，提供给其他功能调用
-- 可使用Components,Templates全局变量快速引用组件/模版，如const FormWrapper =Loader(Components.FormWrapper)
 - 配置型界面，使用渲染数据json通过[Place](#Place)实现
 - 由isPlace（boolean）判断该功能界面是否通过配置型渲染（true）
 - 需要覆盖antd自带的样式放在antd-cover.scss中
 - 需要手动重定向当前页面路由，可以使用全局_store.history对象，也可以通过redux中efos.history获取到，参考https://www.npmjs.com/package/history
-- 界面自适应按2个区间写媒介查询(min-width:1610px)||(max-width:1610px)
-- 因为会自动卸载样式,所以没有启用css编译时的module功能，类名不会添加hash，但是开发时还是要养成习惯尽量在你的样式前加一层父级嵌套，减少样式冲突，相互影响的可能性
+- 因为会自动卸载样式,所以没有启用css编译时的module功能，类名不会添加hash，但是开发时还是要养成习惯尽量在你的样式前加一层父级嵌套，减少样式冲突，相互影响的可能性，但是层级尽量不要太深
 - 开发时建议使用[_umas](#_umas)装饰器，可自动装载和卸载model和style，减少重复性的工作，减少开发量
-- 计时器可使用组件<Interval {call,time,trigger}><YourComponent></Interval>
 - static/_@server_resource/目录下的文件在build时不会打包进去，记得将文件通过ftp上传到服务器对应文件目录中
 - 要尽量使用_app.model将state状态相关移出来到单独的文件YourComponent.model.js中，YourComponent应该只需要存在单纯的UI或者少部分逻辑，然后在你的YourComponent中用_connect把redux关联起来，进而可以读取到其他组件的信息，后期也方便维护，写法参考全局变量[_connect](#_connect)和[_app](#_app)
