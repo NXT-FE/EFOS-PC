@@ -24,7 +24,7 @@
 - 虚拟DOM，组件化开发，组件化生命钩子
 - MVVM框架，数据视图双向绑定
 ### [react-router](https://www.npmjs.com/package/react-router)
-- 基于react框架的路由
+- 基于react框架的路由,界面与地址保持一致，有3种模式（hash/browser/memory），本框架使用Html5 browser路由
 ### [dva](https://dvajs.com/)
 - 基于 redux 和 redux-saga 的数据流方案
 - 全局状态管理，hook
