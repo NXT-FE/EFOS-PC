@@ -266,7 +266,7 @@
 `.js` `.jsx` `.mjs` `.ts` `.tsx` `.scss` `.css` `.json` `.jpg` `.jpeg` `.png` `.bmp` `.gif` `.svg` `.xml` `.html` `.handlebars(不应被使用)`
 ## 配置数据渲染
 **加载关系图**
-![Image text](https://raw.githubusercontent.com/NXT-FE/EFOS-PC/master/loadRelation.jpg)
+![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/loadRelation.jpg)
 **生成配置型界面数据结构：**
 ``` es6
 let config = {
@@ -311,7 +311,7 @@ let config = {
 
 ## 版本控制
 分支关系图基本如下
-![Image text](https://raw.githubusercontent.com/NXT-FE/EFOS-PC/master/gitVersion.png)
+![Image text](https://github.com/NXT-FE/EFOS-PC/blob/master/gitVersion.png)
 
 gitlab上分支类型
 - BUG分支：fix
@@ -323,7 +323,7 @@ gitlab上分支类型
 - 受保护分支：develop,master
 
 ## 发布
-
+- 项目开发完需要提交内测时，在gitlab发起Merge Request合并feat分支到develop，组内人员相互审核，如果代码通过审核，则merge，代码有问题或者可以优化的继续修改，直至可以merge
 - 内测分支和预发布分支全程由web hook push event管道pipe触发jenkins自动打包文件上传发布并反馈发布结果给到gitlab，
 发布结果有4种状态 暂停/运行running/sucess/error
 - 正式环境由运维人员代理发布
@@ -349,3 +349,4 @@ gitlab上分支类型
 - 开发时建议使用[_umas](#_umas)装饰器，可自动装载和卸载model和style，减少重复性的工作，减少开发量
 - static/_@server_resource/目录下的文件在build时不会打包进去，记得将文件通过ftp上传到服务器对应文件目录中
 - 要尽量使用_app.model将state状态相关移出来到单独的文件YourComponent.model.js中，YourComponent应该只需要存在单纯的UI或者少部分逻辑，然后在你的YourComponent中用_connect把redux关联起来，进而可以读取到其他组件的信息，后期也方便维护，写法参考全局变量[_connect](#_connect)和[_app](#_app)
+
